@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeAppBar extends PreferredSize {
-  final double height = 200;
+  final double height = 150;
 
   @override
   Size get preferredSize => Size.fromHeight(height);
