@@ -13,6 +13,7 @@ class Main extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: "Poppins"
       ),
       home: DailyStats(),
     );
@@ -33,6 +34,7 @@ class _DailyStatsState extends State<DailyStats> {
     return Scaffold(
       body: SafeArea(
         child: PageView.builder(
+          physics: new NeverScrollableScrollPhysics(),
           controller: pageController,
           itemCount: pages.length,
           itemBuilder: (context, index) {
