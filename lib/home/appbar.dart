@@ -25,7 +25,7 @@ class HomeAppBar extends PreferredSize {
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 40,
-                  height: 1,
+                  height: 1.1,
                 ),
               ),
               Text(
@@ -33,7 +33,7 @@ class HomeAppBar extends PreferredSize {
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                   fontSize: 40,
-                  height: 1,
+                  height: 1.1,
                 ),
               ),
             ],
