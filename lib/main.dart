@@ -1,5 +1,6 @@
 import 'package:dailystats/home/activity.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(Main());
@@ -11,10 +12,9 @@ class Main extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        fontFamily: "Poppins"
-      ),
+          primarySwatch: Colors.purple,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: "Poppins"),
       home: DailyStats(),
     );
   }
@@ -26,8 +26,9 @@ class DailyStats extends StatefulWidget {
 }
 
 class _DailyStatsState extends State<DailyStats> {
-  final List<Widget> pages = [HomeActivity()];
-  final PageController pageController = PageController(initialPage: 0);
+  int currentPageIndex = 0;
+  final List<Widget> pages = [HomeActivity(), HomeActivity(), HomeActivity()];
+  final PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,49 @@ class _DailyStatsState extends State<DailyStats> {
           itemBuilder: (context, index) {
             return pages[index];
           },
+          onPageChanged: (value) {
+            setState(() {
+              currentPageIndex = value;
+            });
+          },
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        currentIndex: currentPageIndex,
+        onTap: (value) {
+          setState(() {
+            currentPageIndex = value;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Theme.of(context).accentColor,
+        unselectedItemColor: Colors.grey,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              FontAwesomeIcons.home,
+            ),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              FontAwesomeIcons.tasks,
+            ),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.chartPie),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.cog),
+            label: "",
+          ),
+        ],
       ),
     );
   }
