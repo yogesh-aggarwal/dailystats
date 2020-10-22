@@ -1,4 +1,5 @@
 import 'package:dailystats/home/activity.dart';
+import 'package:dailystats/newTask/activity.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -27,7 +28,12 @@ class DailyStats extends StatefulWidget {
 
 class _DailyStatsState extends State<DailyStats> {
   int currentPageIndex = 0;
-  final List<Widget> pages = [HomeActivity(), HomeActivity(), HomeActivity()];
+  final List<Widget> pages = [
+    HomeActivity(),
+    NewTaskActivity(),
+    HomeActivity(),
+    Container(),
+  ];
   final PageController pageController = PageController();
 
   @override
@@ -44,6 +50,7 @@ class _DailyStatsState extends State<DailyStats> {
           onPageChanged: (value) {
             setState(() {
               currentPageIndex = value;
+              pageController.jumpToPage(currentPageIndex);
             });
           },
         ),
@@ -57,6 +64,7 @@ class _DailyStatsState extends State<DailyStats> {
         onTap: (value) {
           setState(() {
             currentPageIndex = value;
+            pageController.jumpToPage(currentPageIndex);
           });
         },
         type: BottomNavigationBarType.fixed,
